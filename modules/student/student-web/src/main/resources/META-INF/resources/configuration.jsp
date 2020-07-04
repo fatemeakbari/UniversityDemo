@@ -1,23 +1,25 @@
-<%@ page import="com.proliferay.myportlet.model.DumpStudent" %><%--
-  Created by IntelliJ IDEA.
-  User: fateme
-  Date: 7/3/20
-  Time: 10:15 AM
-  To change this template use File | Settings | File Templates.
---%>
-<%@include file="init.jsp"%>
+<%@ include file="/init.jsp"%>
 
 
+
+
+<%@taglib uri="http://liferay.com/tld/ddm" prefix="liferay-ddm" %>
+
+
+<%@ page import="com.proliferay.myportlet.model.DumpStudent" %>
+<%@ page import="com.liferay.portal.kernel.util.Constants" %>
+
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+<%@ taglib uri="http://java.sun.com/portlet_2_0" prefix="portlet" %>
+
+<%@ taglib prefix="liferay-ui" uri="http://liferay.com/tld/ui" %>
+<%@ taglib prefix="liferay-frontend" uri="http://liferay.com/tld/frontend" %>
 <liferay-portlet:actionURL portletConfiguration="<%= true %>" var="configurationActionURL" />
 
 <liferay-portlet:renderURL portletConfiguration="<%= true %>" var="configurationRenderURL" />
 
-
-<liferay-portlet:actionURL portletConfiguration="<%=true%>"
-                           var="configurationActionURL" />
-
-<liferay-portlet:renderURL portletConfiguration="<%=true%>"
-                           var="configurationRenderURL" />
 
 <aui:form action="${configurationActionURL}" method="post" name="fm">
     <aui:input name="<%=Constants.CMD%>" type="hidden"
@@ -26,21 +28,29 @@
     <aui:input name="redirect" type="hidden"
                value="${configurationRenderURL}" />
 
-    <aui:fieldset>
-        <aui:select name="city" label="City" value="<%=city%>">
-            <aui:option value="Delhi">Delhi</aui:option>
-            <aui:option value="Bangalore">Bangalore</aui:option>
-            <aui:option value="Chennai">Chennai</aui:option>
-            <aui:option value="Hyderabad">Hyderabad</aui:option>
-        </aui:select>
 
-        <aui:select label="Unit" name="unit" value="<%=unit%>">
-            <aui:option value="Celsius">Celsius</aui:option>
-            <aui:option value="Fahrenheit">Fahrenheit </aui:option>
-        </aui:select>
-    </aui:fieldset>
+    <liferay-frontend:fieldset
+            collapsible="<%= true %>"
+            label="templates"
+    >
+        <div class="display-template">
+
+            <liferay-ddm:template-selector
+                    className="<%= DumpStudent.class.getName() %>"
+                    displayStyle="<%= displayStyle %>"
+                    displayStyleGroupId="<%= displayStyleGroupId %>"
+                    refreshURL="${configurationRenderURL}"
+                    showEmptyOption="<%= true %>"
+            />
+
+        </div>
+    </liferay-frontend:fieldset>
+
 
     <aui:button-row>
-        <aui:button type="submit"></aui:button>
+        <aui:button type="submit" name="submit" />
     </aui:button-row>
 </aui:form>
+
+<p>display = <%=displayStyle%></p>
+<p>display id = <%=displayStyleGroupId%></p>

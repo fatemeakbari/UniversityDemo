@@ -33,7 +33,7 @@ public class StudentPortletDisplayTemplateHandler extends BasePortletDisplayTemp
 
     @Override
     public String getResourceName() {
-        return "Student_Template_Portlet";
+        return "com_proliferay_myportlet_StudentPortlet";
     }
 
     @Override

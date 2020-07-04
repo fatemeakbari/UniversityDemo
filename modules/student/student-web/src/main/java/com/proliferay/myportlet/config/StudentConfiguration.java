@@ -7,9 +7,9 @@ import aQute.bnd.annotation.metatype.Meta;
 )
 public interface StudentConfiguration {
 
-    @Meta.AD(required = false)
-    public String city();
+    @Meta.AD(deflt = "", name = "display-style", required = false)
+    public String displayStyle();
 
-    @Meta.AD(required = false)
-    public String temperatureUnit();
+    @Meta.AD(deflt = "0", name = "display-style-group-id", required = false)
+    public long displayStyleGroupId();
 }
