@@ -1,0 +1,10 @@
+Bundle-Name: university-api
+Bundle-SymbolicName: com.liferay.myportlet.api
+Bundle-Version: 1.0.0
+Export-Package:\
+	com.liferay.myportlet.exception,\
+	com.liferay.myportlet.model,\
+	com.liferay.myportlet.service,\
+	com.liferay.myportlet.service.persistence
+-check: EXPORTS
+-includeresource: META-INF/service.xml=../university-service/service.xml

@@ -1,4 +1,0 @@
-Bundle-Name: university-mvc-web
-Bundle-SymbolicName: com.proliferay.myportlet
-Bundle-Version: 1.0.0
-Export-Package: com.proliferay.myportlet.constants

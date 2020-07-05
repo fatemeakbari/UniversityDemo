@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="com.liferay.myportlet.model.Teacher">
+		<field name="uuid" type="String" />
+		<field name="teacherId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="status" type="int" />
+		<field name="statusByUserId" type="long" />
+		<field name="statusByUserName" type="String" />
+		<field name="statusDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="biography" type="String">
+			<hint name="max-length">6000</hint>
+		</field>
+		<field name="college" type="String" />
+		<field name="rank" type="String" />
+		<field name="position" type="String" />
+		<field name="roomNumber" type="String" />
+		<field name="phoneNumber" type="String" />
+		<field name="emailAddress" type="String" />
+		<field name="twitterAddress" type="String" />
+		<field name="googlePlusAddress" type="String" />
+		<field name="linkedinAddress" type="String" />
+	</model>
+</model-hints>

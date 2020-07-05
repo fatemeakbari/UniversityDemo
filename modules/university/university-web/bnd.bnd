@@ -1,0 +1,4 @@
+Bundle-Name: university-web
+Bundle-SymbolicName: com.liferay.myportlet
+Bundle-Version: 1.0.0
+Export-Package: com.liferay.myportlet.constants
