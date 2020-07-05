@@ -2,11 +2,19 @@
 <%@ page import="com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItem" %>
 <%@ page import="javax.portlet.PortletURL" %>
 <%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
+<%@ page import="javax.portlet.RenderResponse" %>
+<%@ page import="javax.portlet.RenderURL" %>
 <%@ include file="/init.jsp" %>
 <%
 
 	PortletURL renderURL = renderResponse.createRenderURL();
-	renderURL.setProperty("mvcPath", "/jsp.view");
+	renderURL.addProperty("mvcPath", "/jsp.view");
+
+	PortletURL actionURL = renderResponse.createActionURL();
+	actionURL.addProperty("name", "deleteTeacher");
+
+
+
 	List<DropdownItem> collegeDropdownItems = new DropdownItemList() {
 		{
 			add(dropdownItem -> {
@@ -38,11 +46,42 @@
 
 	};
 
+
 	String collegeName = ParamUtil.getString(request,"collegeName");
 	if(collegeName == null){
 		collegeName = "mathCollege";
 	}
 %>
+<%!
+
+	public List<DropdownItem> getCartActions(long teacherId){
+
+		List<DropdownItem> cartActions = new DropdownItemList(){
+			{
+				add(dropdownItem -> {
+					dropdownItem.setLabel("edit");
+				});
+				add(dropdownItem -> {
+					dropdownItem.setLabel("delete");
+				});
+			}
+		};
+
+		return cartActions;
+	}
+
+	public PortletURL create(RenderResponse renderResponse, long teacherId){
+		PortletURL teacherInfoURL = renderResponse.createRenderURL();
+		teacherInfoURL.addProperty("mvcPath", "/teacher_info.jsp");
+		teacherInfoURL.addProperty("teacherId",String.valueOf(teacherId));
+
+		return teacherInfoURL;
+	}
+
+
+%>
+
+	<portlet:renderURL var="myUrl"> <portlet:param name="jspPage" value="/teacher_info.jsp" /> </portlet:renderURL>
 
 <div align="right" >
 	<clay:dropdown-menu
@@ -63,22 +102,26 @@
 		for(int i=0 ; i<teachers.size();i+=4){
 %>
 
+<%--href="<%=create(renderResponse,teachers.get(i+1).getTeacherId())%>"--%>
+
 <div class="row">
 	<div class="col-md-3">
 		<clay:user-card
 				name="<%=teachers.get(i).getName()%>"
-				href="#1"
-				imageAlt="thumbnail"
-				subtitle="Author Action"
+				subtitle="<%=teachers.get(i).getCollege()%>"
+				actionDropdownItems="<%=getCartActions(teachers.get(i).getTeacherId())%>"
+				href=""
 
 		/>
-
 	</div>
 	<c:if test="<%=(i+1)<teachers.size()%>">
 		<div class="col-md-3">
 			<clay:user-card
 					name="<%=teachers.get(i+1).getName()%>"
-					subtitle="Author Action"
+					subtitle="<%=teachers.get(i+1).getCollege()%>"
+					actionDropdownItems="<%=getCartActions(teachers.get(i+1).getTeacherId())%>"
+
+
 			/>
 		</div>
 	</c:if>
@@ -87,19 +130,19 @@
 		<div class="col-md-3">
 			<clay:user-card
 					name="<%=teachers.get(i+2).getName()%>"
-					subtitle="Author Action"
+					subtitle="<%=teachers.get(i+2).getCollege()%>"
+					actionDropdownItems="<%=getCartActions(teachers.get(i+2).getTeacherId())%>"
+
 			/>
 		</div>
 	</c:if>
 	<c:if test="<%=(i+3)<teachers.size()%>">
 		<div class="col-md-3">
-			<clay:image-card
-					title="<%=teachers.get(i+3).getName()%>"
-					stickerImageAlt="Alt Text"
-					stickerLabel="PNG"
-					stickerShape="circle"
-					stickerStyle="info"
-					subtitle="Author Action"
+			<clay:user-card
+					name="<%=teachers.get(i+3).getName()%>"
+					subtitle="<%=teachers.get(i+3).getCollege()%>"
+					actionDropdownItems="<%=getCartActions(teachers.get(i+3).getTeacherId())%>"
+
 			/>
 		</div>
 	</c:if>
