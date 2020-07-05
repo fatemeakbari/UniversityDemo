@@ -1,12 +1,19 @@
 package com.liferay.myportlet.portlet;
 
+import com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItem;
+import com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItemList;
 import com.liferay.myportlet.constants.TeacherPortletKeys;
 
 import com.liferay.portal.kernel.portlet.bridges.mvc.MVCPortlet;
 
-import javax.portlet.Portlet;
+import javax.portlet.*;
 
+import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Modified;
+
+import java.io.IOException;
+import java.util.List;
 
 /**
  * @author fateme
@@ -27,4 +34,6 @@ import org.osgi.service.component.annotations.Component;
 	service = Portlet.class
 )
 public class TeacherPortlet extends MVCPortlet {
+
+
 }

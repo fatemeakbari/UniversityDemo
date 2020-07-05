@@ -18,7 +18,7 @@ public class DropDownDisplayContext extends GenericPortlet {
 
     public void doView(RenderRequest renderRequest, RenderResponse renderResponse) {
         renderURL = renderResponse.createRenderURL();
-
+        renderURL.addProperty("mvcPath","/view.jsp");
     }
 
 
