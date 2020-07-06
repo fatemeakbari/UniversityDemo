@@ -261,10 +261,12 @@ public class TeacherLocalServiceUtil {
 	 *
 	 * @param teacherId the primary key of the teacher
 	 * @return the teacher
+	 * @throws NoSuchTeacherException
 	 * @throws PortalException if a teacher with the primary key could not be found
 	 */
 	public static com.liferay.myportlet.model.Teacher getTeacher(long teacherId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+		throws com.liferay.myportlet.exception.NoSuchTeacherException,
+			   com.liferay.portal.kernel.exception.PortalException {
 
 		return getService().getTeacher(teacherId);
 	}
@@ -275,11 +277,13 @@ public class TeacherLocalServiceUtil {
 	 * @param uuid the teacher's UUID
 	 * @param groupId the primary key of the group
 	 * @return the matching teacher
+	 * @throws NoSuchTeacherException
 	 * @throws PortalException if a matching teacher could not be found
 	 */
 	public static com.liferay.myportlet.model.Teacher
 			getTeacherByUuidAndGroupId(String uuid, long groupId)
-		throws com.liferay.portal.kernel.exception.PortalException {
+		throws com.liferay.myportlet.exception.NoSuchTeacherException,
+			   com.liferay.portal.kernel.exception.PortalException {
 
 		return getService().getTeacherByUuidAndGroupId(uuid, groupId);
 	}

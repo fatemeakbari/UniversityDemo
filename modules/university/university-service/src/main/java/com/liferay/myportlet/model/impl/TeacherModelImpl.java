@@ -142,11 +142,9 @@ public class TeacherModelImpl
 
 	public static final long GROUPID_COLUMN_BITMASK = 4L;
 
-	public static final long TEACHERID_COLUMN_BITMASK = 8L;
+	public static final long UUID_COLUMN_BITMASK = 8L;
 
-	public static final long UUID_COLUMN_BITMASK = 16L;
-
-	public static final long CREATEDATE_COLUMN_BITMASK = 32L;
+	public static final long CREATEDATE_COLUMN_BITMASK = 16L;
 
 	public static void setEntityCacheEnabled(boolean entityCacheEnabled) {
 		_entityCacheEnabled = entityCacheEnabled;
@@ -464,19 +462,7 @@ public class TeacherModelImpl
 
 	@Override
 	public void setTeacherId(long teacherId) {
-		_columnBitmask |= TEACHERID_COLUMN_BITMASK;
-
-		if (!_setOriginalTeacherId) {
-			_setOriginalTeacherId = true;
-
-			_originalTeacherId = _teacherId;
-		}
-
 		_teacherId = teacherId;
-	}
-
-	public long getOriginalTeacherId() {
-		return _originalTeacherId;
 	}
 
 	@JSON
@@ -1056,10 +1042,6 @@ public class TeacherModelImpl
 
 		teacherModelImpl._originalUuid = teacherModelImpl._uuid;
 
-		teacherModelImpl._originalTeacherId = teacherModelImpl._teacherId;
-
-		teacherModelImpl._setOriginalTeacherId = false;
-
 		teacherModelImpl._originalGroupId = teacherModelImpl._groupId;
 
 		teacherModelImpl._setOriginalGroupId = false;
@@ -1309,8 +1291,6 @@ public class TeacherModelImpl
 	private String _uuid;
 	private String _originalUuid;
 	private long _teacherId;
-	private long _originalTeacherId;
-	private boolean _setOriginalTeacherId;
 	private long _groupId;
 	private long _originalGroupId;
 	private boolean _setOriginalGroupId;

@@ -15,6 +15,7 @@
 package com.liferay.myportlet.service;
 
 import com.liferay.exportimport.kernel.lar.PortletDataContext;
+import com.liferay.myportlet.exception.NoSuchTeacherException;
 import com.liferay.myportlet.model.Teacher;
 import com.liferay.portal.kernel.dao.orm.ActionableDynamicQuery;
 import com.liferay.portal.kernel.dao.orm.DynamicQuery;
@@ -223,10 +224,12 @@ public interface TeacherLocalService
 	 *
 	 * @param teacherId the primary key of the teacher
 	 * @return the teacher
+	 * @throws NoSuchTeacherException
 	 * @throws PortalException if a teacher with the primary key could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
-	public Teacher getTeacher(long teacherId) throws PortalException;
+	public Teacher getTeacher(long teacherId)
+		throws NoSuchTeacherException, PortalException;
 
 	/**
 	 * Returns the teacher matching the UUID and group.
@@ -234,11 +237,12 @@ public interface TeacherLocalService
 	 * @param uuid the teacher's UUID
 	 * @param groupId the primary key of the group
 	 * @return the matching teacher
+	 * @throws NoSuchTeacherException
 	 * @throws PortalException if a matching teacher could not be found
 	 */
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Teacher getTeacherByUuidAndGroupId(String uuid, long groupId)
-		throws PortalException;
+		throws NoSuchTeacherException, PortalException;
 
 	@Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 	public Integer getTeacherCount(long groupId);

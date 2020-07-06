@@ -59,10 +59,6 @@
 			<finder-column name="college"/>
 		</finder>
 
-		<finder name="TeacherId" return-type="Collection">
-			<finder-column name="teacherId"/>
-		</finder>
-
 
 
 	</entity>

@@ -1,3 +1,4 @@
+<%@ taglib prefix="liferay-ddm" uri="http://liferay.com/tld/ddm" %>
 <%@ page import="com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItemList" %>
 <%@ page import="com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItem" %>
 <%@ page import="javax.portlet.PortletURL" %>
@@ -5,149 +6,96 @@
 <%@ page import="javax.portlet.RenderResponse" %>
 <%@ page import="javax.portlet.RenderURL" %>
 <%@ include file="/init.jsp" %>
+
+
+
 <%
-
-	PortletURL renderURL = renderResponse.createRenderURL();
-	renderURL.addProperty("mvcPath", "/jsp.view");
-
-	PortletURL actionURL = renderResponse.createActionURL();
-	actionURL.addProperty("name", "deleteTeacher");
-
-
-
-	List<DropdownItem> collegeDropdownItems = new DropdownItemList() {
-		{
-			add(dropdownItem -> {
-				dropdownItem.setHref(renderURL, "collegeName", "mathCollege");
-				dropdownItem.setLabel("Math College");
-				dropdownItem.setActive(true);
-			});
-
-			add(dropdownItem -> {
-				dropdownItem.setHref(renderURL, "collegeName", "computerCollege");
-				dropdownItem.setLabel("Computer College");
-				});
-
-			add(dropdownItem -> {
-				dropdownItem.setHref(renderURL, "collegeName", "chemistryCollege");
-				dropdownItem.setLabel("Chemistry College");
-				});
-
-			add(dropdownItem -> {
-				dropdownItem.setHref(renderURL, "collegeName", "mechanicCollege");
-				dropdownItem.setLabel("Mechanic College");
-				});
-
-			add(dropdownItem -> {
-				dropdownItem.setHref(renderURL, "collegeName", "constructionCollege");
-				dropdownItem.setLabel("Construction College");
-				});
-	}
-
-	};
-
 
 	String collegeName = ParamUtil.getString(request,"collegeName");
 	if(collegeName == null){
 		collegeName = "mathCollege";
 	}
 %>
-<%!
-
-	public List<DropdownItem> getCartActions(long teacherId){
-
-		List<DropdownItem> cartActions = new DropdownItemList(){
-			{
-				add(dropdownItem -> {
-					dropdownItem.setLabel("edit");
-				});
-				add(dropdownItem -> {
-					dropdownItem.setLabel("delete");
-				});
-			}
-		};
-
-		return cartActions;
-	}
-
-	public PortletURL create(RenderResponse renderResponse, long teacherId){
-		PortletURL teacherInfoURL = renderResponse.createRenderURL();
-		teacherInfoURL.addProperty("mvcPath", "/teacher_info.jsp");
-		teacherInfoURL.addProperty("teacherId",String.valueOf(teacherId));
-
-		return teacherInfoURL;
-	}
 
 
-%>
-
-	<portlet:renderURL var="myUrl"> <portlet:param name="jspPage" value="/teacher_info.jsp" /> </portlet:renderURL>
+<div>
+	<aui:button-row cssClass="">
+		<portlet:renderURL var="addTeacherURL">
+			<portlet:param name="mvcPath" value="/edit_teacher.jsp"/>
+		</portlet:renderURL>
+		<aui:button value="Add Teacher" onClick="${addTeacherURL}"  cssClass="btn btn-primary"/>
+	</aui:button-row>
+</div>
 
 <div align="right" >
 	<clay:dropdown-menu
 
 			searchable="true"
-			dropdownItems="<%=collegeDropdownItems%>"
+			dropdownItems="<%=dropDownDisplayContext.getCollegeDropdownItems()%>"
 			label="College"
 			itemsIconAlignment="right"
 	/>
 </div>
 
 </br>
+
 <%
 	List<Teacher> teachers = TeacherLocalServiceUtil.getTeachers(collegeName,scopeGroupId);
-
-	if(teachers.size() > 0){
-
-		for(int i=0 ; i<teachers.size();i+=4){
 %>
+<%--<liferay-ddm:template-renderer--%>
+<%--		className="<%= Teacher.class.getName() %>"--%>
+<%--		displayStyle="<%= displayStyle %>"--%>
+<%--		displayStyleGroupId="<%= displayStyleGroupId %>"--%>
+<%--		entries="<%= teachers %>">--%>
 
-<%--href="<%=create(renderResponse,teachers.get(i+1).getTeacherId())%>"--%>
 
-<div class="row">
-	<div class="col-md-3">
-		<clay:user-card
-				name="<%=teachers.get(i).getName()%>"
-				subtitle="<%=teachers.get(i).getCollege()%>"
-				actionDropdownItems="<%=getCartActions(teachers.get(i).getTeacherId())%>"
-				href=""
 
-		/>
+	<%
+		Teacher curTeacher = null;
+		int numOfTeacher =  teachers.size();
+		int numOfCol=3;
+
+		for(int row=0;row<numOfTeacher;row++){
+			if (row%numOfCol == 0){
+
+	%>
+
+	<div class="row">
+
+		<%
+			for(int col=row;col<(row+numOfCol);col++){
+				if(col<numOfTeacher)
+				{
+					curTeacher = teachers.get(col);
+
+		%>
+		<div class="col-md-4">
+
+			<portlet:renderURL var="teacherInfoURL">
+				<portlet:param name="mvcPath" value="/teacher_info.jsp"/>
+				<portlet:param name="teacherId" value="<%=String.valueOf(curTeacher.getTeacherId())%>"/>
+			</portlet:renderURL>
+			<clay:user-card
+					name="<%=curTeacher.getName()%>"
+					subtitle="<%=curTeacher.getCollege()%>"
+					href="${teacherInfoURL}"
+					actionDropdownItems=
+							"<%=cardsDropdownDisplayContext.getTeacherDropdownItems(curTeacher.getTeacherId())%>"
+
+			/>
+		</div>
+		<%
+				}
+			}
+		%>
+
+
 	</div>
-	<c:if test="<%=(i+1)<teachers.size()%>">
-		<div class="col-md-3">
-			<clay:user-card
-					name="<%=teachers.get(i+1).getName()%>"
-					subtitle="<%=teachers.get(i+1).getCollege()%>"
-					actionDropdownItems="<%=getCartActions(teachers.get(i+1).getTeacherId())%>"
-
-
-			/>
-		</div>
-	</c:if>
-	<c:if test="<%=(i+2)<teachers.size()%>">
-
-		<div class="col-md-3">
-			<clay:user-card
-					name="<%=teachers.get(i+2).getName()%>"
-					subtitle="<%=teachers.get(i+2).getCollege()%>"
-					actionDropdownItems="<%=getCartActions(teachers.get(i+2).getTeacherId())%>"
-
-			/>
-		</div>
-	</c:if>
-	<c:if test="<%=(i+3)<teachers.size()%>">
-		<div class="col-md-3">
-			<clay:user-card
-					name="<%=teachers.get(i+3).getName()%>"
-					subtitle="<%=teachers.get(i+3).getCollege()%>"
-					actionDropdownItems="<%=getCartActions(teachers.get(i+3).getTeacherId())%>"
-
-			/>
-		</div>
-	</c:if>
-</div>
-<%
+	<%
+			}
 		}
-	}
-%>
+	%>
+
+<%--</liferay-ddm:template-renderer>--%>
+
+

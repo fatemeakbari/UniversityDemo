@@ -21,6 +21,7 @@ import com.liferay.exportimport.kernel.lar.StagedModelDataHandler;
 import com.liferay.exportimport.kernel.lar.StagedModelDataHandlerRegistryUtil;
 import com.liferay.exportimport.kernel.lar.StagedModelDataHandlerUtil;
 import com.liferay.exportimport.kernel.lar.StagedModelType;
+import com.liferay.myportlet.exception.NoSuchTeacherException;
 import com.liferay.myportlet.model.Teacher;
 import com.liferay.myportlet.service.TeacherLocalService;
 import com.liferay.myportlet.service.persistence.TeacherPersistence;
@@ -243,10 +244,13 @@ public abstract class TeacherLocalServiceBaseImpl
 	 *
 	 * @param teacherId the primary key of the teacher
 	 * @return the teacher
+	 * @throws NoSuchTeacherException
 	 * @throws PortalException if a teacher with the primary key could not be found
 	 */
 	@Override
-	public Teacher getTeacher(long teacherId) throws PortalException {
+	public Teacher getTeacher(long teacherId)
+		throws NoSuchTeacherException, PortalException {
+
 		return teacherPersistence.findByPrimaryKey(teacherId);
 	}
 
@@ -451,11 +455,12 @@ public abstract class TeacherLocalServiceBaseImpl
 	 * @param uuid the teacher's UUID
 	 * @param groupId the primary key of the group
 	 * @return the matching teacher
+	 * @throws NoSuchTeacherException
 	 * @throws PortalException if a matching teacher could not be found
 	 */
 	@Override
 	public Teacher getTeacherByUuidAndGroupId(String uuid, long groupId)
-		throws PortalException {
+		throws NoSuchTeacherException, PortalException {
 
 		return teacherPersistence.findByUUID_G(uuid, groupId);
 	}

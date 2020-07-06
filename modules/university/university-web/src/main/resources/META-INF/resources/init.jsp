@@ -16,10 +16,31 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%@ page import="com.liferay.myportlet.service.TeacherLocalServiceUtil" %>
 <%@ page import="com.liferay.myportlet.model.Teacher" %>
-<%@ page import="com.liferay.myportlet.display.context.DropDownDisplayContext" %>
+<%@ page import="com.liferay.myportlet.display.context.MenuDropdownDisplayContext" %>
 
 <%@ page import="com.liferay.frontend.taglib.clay.servlet.taglib.util.SelectOption" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.liferay.myportlet.constants.TeacherPortletKeys" %>
+<%@ page import="com.liferay.myportlet.display.context.CardsDropdownDisplayContext" %>
+<%@ page import="com.liferay.myportlet.service.TeacherLocalService" %>
+<%@ page import="com.liferay.portal.kernel.portlet.PortalPreferences" %>
+<%@ page import="com.liferay.portal.kernel.portlet.PortletPreferencesFactoryUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
+<%@ page import="com.liferay.portal.kernel.util.StringPool" %>
 <liferay-theme:defineObjects />
 <portlet:defineObjects />
+
+<%
+    MenuDropdownDisplayContext dropDownDisplayContext =
+            (MenuDropdownDisplayContext) request.getAttribute(TeacherPortletKeys.MENUS_DISPLAY_CONTEXT);
+
+    CardsDropdownDisplayContext cardsDropdownDisplayContext =
+            (CardsDropdownDisplayContext) request.getAttribute(TeacherPortletKeys.CARDS_DISPLAY_CONTEXT);
+
+    PortalPreferences portalPreferences = PortletPreferencesFactoryUtil.getPortalPreferences(liferayPortletRequest);
+    String displayStyle =
+            GetterUtil.getString(portletPreferences.getValue("displayStyle", StringPool.BLANK));
+    long displayStyleGroupId = GetterUtil.getLong(portletPreferences.getValue("displayStyleGroupId", null), scopeGroupId);
+
+%>

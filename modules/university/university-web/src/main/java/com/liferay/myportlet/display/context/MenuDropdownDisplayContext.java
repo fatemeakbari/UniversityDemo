@@ -10,23 +10,24 @@ import javax.portlet.RenderResponse;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DropDownDisplayContext extends GenericPortlet {
+public class MenuDropdownDisplayContext {
 
     private PortletURL renderURL;
     private List<DropdownItem> collegeDropdownItems;
+    private RenderResponse renderResponse;
 
-
-    public void doView(RenderRequest renderRequest, RenderResponse renderResponse) {
-        renderURL = renderResponse.createRenderURL();
-        renderURL.addProperty("mvcPath","/view.jsp");
+    public MenuDropdownDisplayContext(RenderResponse renderResponse) {
+        this.renderResponse = renderResponse;
     }
-
 
     public List<DropdownItem> getCollegeDropdownItems() {
 
         if (collegeDropdownItems != null) {
             return collegeDropdownItems;
         }
+
+        renderURL = renderResponse.createRenderURL();
+        renderURL.addProperty("mvcPath", "/view.jsp");
 
         collegeDropdownItems = new DropdownItemList() {
             {

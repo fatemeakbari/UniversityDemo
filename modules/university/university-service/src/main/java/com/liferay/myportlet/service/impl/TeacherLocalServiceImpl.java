@@ -14,6 +14,7 @@
 
 package com.liferay.myportlet.service.impl;
 
+import com.liferay.myportlet.exception.NoSuchTeacherException;
 import com.liferay.myportlet.exception.TeacherCollegeException;
 import com.liferay.myportlet.exception.TeacherEmailAddressException;
 import com.liferay.myportlet.exception.TeacherNameException;
@@ -115,8 +116,10 @@ public class TeacherLocalServiceImpl extends TeacherLocalServiceBaseImpl {
 	}
 
 
-	public Teacher getTeacher(long teacherId) throws PortalException {
-		return teacherLocalService.getTeacher(teacherId);
+	public Teacher getTeacher(long teacherId) throws NoSuchTeacherException {
+
+		return teacherPersistence.findByPrimaryKey(teacherId);
+
 	}
 
 
