@@ -1,9 +1,10 @@
 package com.liferay.myportlet.portlet;
 
 import com.liferay.myportlet.constants.TeacherPortletKeys;
-import com.liferay.myportlet.fakemodel.UniversityEducation;
-import com.liferay.myportlet.fakemodel.UniversityPerson;
 import com.liferay.myportlet.model.Teacher;
+import com.liferay.myportlet.fakemodel.UniversityEducation;
+import com.liferay.myportlet.fakemodel.UniversityFaculty;
+import com.liferay.myportlet.fakemodel.UniversityPerson;
 import com.liferay.portal.kernel.portletdisplaytemplate.BasePortletDisplayTemplateHandler;
 import com.liferay.portal.kernel.template.TemplateHandler;
 import com.liferay.portal.kernel.template.TemplateVariableGroup;
@@ -18,11 +19,11 @@ import java.util.Map;
 @Component(
         immediate = true,
         property = {
-                "javax.portlet.name="+ TeacherPortletKeys.TEACHER_ADT
+                "javax.portlet.name="+ TeacherPortletKeys.TEACHER_INFO_ADT
         },
         service = TemplateHandler.class
 )
-public class TeacherPortletDisplayTemplateHandler extends BasePortletDisplayTemplateHandler {
+public class TeacherInfoPortletDisplayTemplateHandler extends BasePortletDisplayTemplateHandler {
     @Override
     public String getClassName() {
         return UniversityPerson.class.getName();
@@ -30,12 +31,12 @@ public class TeacherPortletDisplayTemplateHandler extends BasePortletDisplayTemp
 
     @Override
     public String getName(Locale locale) {
-        return "Teacher ADT";
+        return "Teacher Info ADT";
     }
 
     @Override
     public String getResourceName() {
-        return TeacherPortletKeys.TEACHER;
+        return TeacherPortletKeys.TEACHER_INFO;
     }
 
     @Override
@@ -60,7 +61,6 @@ public class TeacherPortletDisplayTemplateHandler extends BasePortletDisplayTemp
         //templateVariableGroup.addVariable("teacher",Teacher.class, PortletDisplayTemplateConstants.ENTRY);
         templateVariableGroup.addVariable("universityPerson", UniversityPerson.class, PortletDisplayTemplateConstants.ENTRY);
         templateVariableGroup.addVariable("universityEducation", UniversityEducation.class, "universityEducationEntry");
-        templateVariableGroup.addVariable("universityFaculty", UniversityEducation.class, "universityFacultyEntry");
 
 
         return templateVariableGroups;

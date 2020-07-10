@@ -7,6 +7,7 @@
 
 
 <%@ page import="com.liferay.portal.kernel.util.Constants" %>
+<%@ page import="com.liferay.myportlet.fakemodel.UniversityPerson" %>
 
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -35,7 +36,7 @@
         <div class="display-template">
 
             <liferay-ddm:template-selector
-                    className="<%= Teacher.class.getName() %>"
+                    className="<%= UniversityPerson.class.getName() %>"
                     displayStyle="<%= displayStyle %>"
                     displayStyleGroupId="<%= displayStyleGroupId %>"
                     refreshURL="${configurationRenderURL}"

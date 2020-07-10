@@ -1,0 +1,1448 @@
+:root {
+  --font-family: "Estedad", "IRANSansWeb(FaNum) Light", "Lato", sans-serif;
+  --font-family-by-fontawesome: FontAwesome, "Estedad", "IRANSansWeb(FaNum) Light", "Lato", sans-serif;
+  --black-full: #000;
+  --black-high: #222;
+  --black-low: #444;
+  --black-very-low-opacity: rgba(0, 0, 0, 0.03);
+  --black-low-opacity: rgba(0, 0, 0, 0.08);
+  --black-medium-opacity: rgba(0, 0, 0, 0.3);
+  --grey-high: #666;
+  --grey-very-high: #888;
+  --grey-meduim: #999;
+  --light-full: #fff;
+  --light-grey: #f7f7f7;
+  --light-grey-high: #fafafa;
+  --light-grey-medium: #eee;
+  --light-grey-low: #ddd;
+  --light-blue: #f2f5f9;
+  --light-red: #fffcfc;
+  --light-blue-grey: #e7ecf2;
+  --red-very-low: #f9e6e6;
+  --red-low: #fee9e9;
+  --red-medium: #f78c8c;
+  --red-high: #e8564f;
+  --red-very-high: #b02727;
+  --blue-grey: #7295a6;
+  --dark-red: #530404;
+  --orange-gradient: linear-gradient(147deg, #fe8a39 0%, #fd3838 74%);
+  --blue-gradient: linear-gradient(147deg, #39bdfe 0%, #3885fd 74%);
+  --side-column-color: #f6f8fb;
+  --showmore-trigger-icon: "\f0dc";
+  --clean-table-color: #3d4449;
+  --clean-table-border: rgba(210, 215, 217, 0.75);
+  --clean-table-odd-row-bg: rgba(230, 235, 237, 0.25);
+}
+
+/***************************************************
+********************** Global **********************
+ **************************************************/
+@font-face {
+  font-family: "Estedad";
+  src: url(../fonts/Estedad-VF-FD.woff2) format("woff2"), url(../fonts/Estedad-VF-FD.ttf) format("ttf");
+}
+
+body {
+  font-size: 81.25%;
+  font-family: var(--font-family);
+  font-weight: 300;
+  background: var(--light-blue);
+  color: var(--black-high);
+}
+
+.rtl {
+  direction: rtl;
+  text-align: right;
+}
+
+a {
+  text-decoration: none;
+  outline: 0;
+  color: var(--black-high);
+}
+
+a:hover, a:focus {
+  text-decoration: none;
+  outline: 0;
+  color: var(--black-high);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  font-weight: 300;
+}
+
+b {
+  font-variation-settings: "wght" 700;
+}
+
+hr {
+  border: 0;
+  border-top: 2px dashed #e5ecf7;
+  margin: 40px 0;
+}
+
+/***************************************************
+********************** Page ***********************
+ **************************************************/
+.page {
+  position: relative;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.page .card {
+  display: flex;
+  align-items: start;
+  background: transparent;
+  border: 0;
+  position: relative;
+  flex: 1;
+  padding: 0;
+}
+
+.page .card .header {
+  width: 100%;
+  padding-top: 6em;
+  background: var(--light-blue);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.page .card .body {
+  box-shadow: 0 2px 3px -1px var(--black-low-opacity);
+  background: var(--light-full);
+  border-radius: 0 0 4px 4px;
+}
+
+.page .card .info {
+  display: flex;
+  align-items: start;
+  width: 100%;
+  flex-wrap: wrap;
+  background: var(--light-full);
+  padding-top: 2em;
+  box-shadow: 0 -1px 3px -1px var(--black-low-opacity);
+  border-radius: 4px 4px 0 0;
+  position: relative;
+  padding-bottom: 1em;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.page .info .image {
+  flex-shrink: 0;
+  box-shadow: 0 0 10px 5px var(--black-low-opacity);
+  border-radius: 6px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  border: 4px solid var(--light-full);
+  margin-right: 2.3em;
+  margin-top: -6em;
+}
+
+.page .info .image img {
+  width: 10em;
+}
+
+.page .info .content {
+  padding: 0 1.5em 0 0;
+  flex-grow: 2;
+}
+
+.page .info .content.left {
+  margin-right: auto;
+  text-align: left;
+  padding: 0 0 0 30px;
+  flex-grow: 1;
+}
+
+.page .info .content.scopus img,
+.page .info .content.GoogleScholar img {
+  height: 20px;
+  margin-bottom: 5px;
+}
+
+.page .info .content .code {
+  color: var(--grey-very-high);
+  margin: 0;
+  display: block;
+  font-weight: 500;
+  font-size: 1.4em;
+  font-variation-settings: "wght" 200;
+}
+
+.page .info .content .title {
+  font-size: 2em;
+  color: var(--black-high);
+  margin-bottom: 0.3em;
+}
+
+.page .info .content .subtitle {
+  font-size: 1em;
+  color: var(--grey-high);
+  font-variation-settings: "wght" 200;
+}
+
+.page .info .content .text {
+  color: var(--grey-high);
+  margin-bottom: 20px;
+  line-height: 1.7em;
+}
+
+.page .iconsContainer {
+  position: relative;
+  z-index: 3;
+}
+
+.page .iconsContainer .icons {
+  cursor: default;
+  display: inline-flex;
+  position: sticky;
+  top: 6em;
+  flex-direction: column-reverse;
+  align-items: flex-end;
+  padding: 10px 10px 0 0;
+}
+
+.page .iconsContainer .icons a {
+  color: var(--light-full);
+  background: var(--grey-meduim);
+  padding: 5px 0;
+  border-radius: 50px;
+  text-decoration: none;
+  justify-content: center;
+  transition: transform 0.2s ease-in-out;
+  margin-bottom: 10px;
+  width: 32px;
+  height: 31px;
+  display: inline-block;
+  text-align: center;
+  opacity: 0.8;
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.page .iconsContainer .icons a i {
+  transition: all 0.2s ease-in-out;
+  position: relative;
+  top: 2px;
+}
+
+.page .iconsContainer .icons a:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+.page .iconsContainer .icons a.email,
+.page .iconsContainer .icons a .icon-qrcode,
+.page .iconsContainer .icons a .icon-download-alt {
+  color: var(--light-full);
+}
+
+.page .iconsContainer .icons a .icon-qrcode {
+  font-size: 15px;
+}
+
+.qrimg {
+  max-width: 150px;
+}
+
+.page .card .information {
+  padding: 1.5em 30px 0;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: flex-start;
+  width: 100%;
+  min-height: 250px;
+  overflow: hidden;
+}
+
+.page .card .information h2 {
+  font-size: 1.6em;
+  color: var(--black-low);
+  font-variation-settings: "wght" 400;
+}
+
+.page .card .information > .main {
+  margin-bottom: 40px;
+  margin-left: auto;
+  flex: 2;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.page .card .information .main .bio {
+  line-height: 2;
+}
+
+.page .card .information .main > div > h2 {
+  margin-top: 40px;
+}
+
+.page .card .information .main > div:first-of-type > h2 {
+  margin-top: 0;
+}
+
+.page .card .information .SideColumn {
+  border: 2px dashed var(--red-very-low);
+  border-radius: 6px;
+  background: var(--light-red);
+  margin: 0 2.3em 2.3em 0;
+  padding: 2.3em;
+  line-height: 2;
+  color: var(--black-low);
+  top: 250px;
+  flex: 1;
+  text-align: right;
+}
+
+.page .card .information .SideColumn h3 {
+  font-size: 1.4em;
+  margin-top: 2.3em;
+}
+
+.page .card .information .SideColumn h3:first-child {
+  margin-top: 0;
+}
+
+.page .card .information .tags .tag {
+  background: var(--light-full);
+  border-radius: 3px;
+  box-shadow: 0 1px 5px -2px var(--black-medium-opacity);
+  padding: 1px 5px;
+  margin: 0 0 5px 5px;
+  white-space: nowrap;
+  display: inline-block;
+  font-size: 0.9em;
+}
+
+.page .card .information .tags h3 {
+  margin-bottom: 15px;
+}
+
+.page .card .information .timeline {
+  padding: 0 25px 0 0;
+  position: relative;
+  line-height: 3em;
+  list-style: none;
+}
+
+.page .card .information .timeline::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 1.5em;
+  bottom: 1.5em;
+  margin: 0 -19.7px 0 0;
+  border-right: 1px solid var(--red-very-low);
+}
+
+.page .card .information .timeline li::before {
+  content: "";
+  display: block;
+  position: absolute;
+  margin: 1em -23.6px;
+  background: var(--red-very-low);
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+}
+
+.page .card .information .timeline .years {
+  white-space: nowrap;
+}
+
+.page .card .information .books ul {
+  list-style: none;
+  padding: 0;
+}
+
+.page .card .information .books ul li {
+  padding: 10px;
+  border-radius: 4px;
+  transition: all 0.1s ease-in-out;
+}
+
+.page .card .information .books ul li:before {
+  content: "";
+  display: inline-block;
+  border: 4px solid var(--red-medium);
+  border-radius: 50%;
+  position: relative;
+  top: 0;
+  margin-left: 5px;
+}
+
+.page .card .information .books ul li.hasDescription:before {
+  content: var(--showmore-trigger-icon);
+  font-family: var(--font-family-by-fontawesome);
+  border: none;
+  color: var(--red-medium);
+}
+
+.page .card .information .books ul li:hover {
+  background: var(--light-grey);
+}
+
+.page .card .information .books ul li .title {
+  font-variation-settings: "wght" 400;
+  display: inline;
+  margin: 0;
+}
+
+.page .card .information .books ul li .subtitle {
+  color: var(--grey-high);
+  font-variation-settings: "wght" 100;
+}
+
+.page .card .information .books ul li .subtitle.label {
+  font-variation-settings: "wght" 300;
+  background: var(--red-low);
+  padding: 0 5px;
+  border-radius: 3px;
+  font-size: 0.9em;
+  margin: 0 5px;
+  transition: all 0.3s ease-in-out;
+  color: var(--red-very-high);
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.page .card .information .books ul li:hover .subtitle.label {
+  color: var(--light-full);
+  background: var(--black-low);
+}
+
+.page .card .information .books ul li .description {
+  line-height: 1.5;
+  border-right: 2px dashed var(--red-medium);
+  padding: 0 15px 0 0;
+}
+
+.page .card .information .books ul li.panel {
+  padding: 10px;
+}
+
+.page .card .information .books ul li.panel .panelhandle {
+  cursor: pointer;
+  display: inline;
+}
+
+.page .card .information .books ul li .link,
+.page .card .information .books ul li .closeBox {
+  color: var(--light-full);
+  float: left;
+  background: var(--black-high);
+  border-radius: 4px;
+  padding: 5px 10px;
+  transition: all 0.2s ease-in-out;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+.page .card .information .books ul li .link:hover,
+.page .card .information .books ul li .closeBox:hover {
+  background: var(--black-low);
+}
+
+.page .card .information .books ul li .link {
+  background: var(--red-high);
+  float: right;
+}
+
+.page .card .information .books ul li .link:hover {
+  background: var(--red-very-high);
+}
+
+.page .card .information .books ul li a[href] .title {
+  text-decoration: underline dashed var(--grey-high);
+}
+
+.page .card .information .books ul li a[href]:hover .title {
+  text-decoration: underline solid var(--grey-meduim);
+}
+
+.page .card .menu {
+  display: flex;
+  position: absolute;
+  transform: translateY(-100%);
+  right: 14em;
+  left: 20px;
+  flex-direction: row;
+  align-items: flex-end;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.page .card .menu > div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.page .card .menu > .left {
+  margin-right: auto;
+  position: relative;
+}
+
+.page .card .menu > .right {
+  overflow-x: auto;
+  margin-left: 20px;
+}
+
+.page .card .menu > .right a:last-child {
+  margin-left: 20px;
+}
+
+.page .card .menu > .left:before {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -10px;
+  top: 0;
+  bottom: 0;
+  box-shadow: 15px 0 15px 15px var(--light-blue);
+  background: var(--light-blue);
+  width: 5px;
+}
+
+.page .card .menu a {
+  box-shadow: inset 0 -10px 10px -17px var(--black-medium-opacity);
+  padding: 5px 10px;
+  border-radius: 4px 4px 0 0;
+  color: var(--blue-grey);
+  text-decoration: none;
+  justify-content: center;
+  font-size: 0.9em;
+  transition: padding 0.1s ease-in-out;
+  margin-left: 10px;
+  width: auto;
+  background: var(--light-blue-grey);
+  white-space: nowrap;
+}
+
+.page .card .menu a i {
+  position: relative;
+  top: 2px;
+  margin-left: 5px;
+  font-size: 1.1em;
+  color: var(--blue-grey);
+}
+
+.page .card .menu a.active i {
+  color: var(--black-low);
+}
+
+.page .card .menu a i.icon-home, .page .card .menu a i.icon-trophy {
+  top: 0.5px;
+}
+
+.page .card .menu a:hover {
+  padding-bottom: 8px;
+}
+
+.page .card .menu a.active {
+  background: var(--light-full);
+  color: var(--black-high);
+  box-shadow: none;
+  padding: 10px 15px 6px;
+}
+
+.page .card .menu .button {
+  background-image: var(--orange-gradient);
+  color: var(--light-full);
+  margin-right: auto;
+  box-shadow: inset 0 -10px 10px -15px var(--black-full);
+  margin-left: 0;
+}
+
+.page .card .menu .button i {
+  color: var(--light-full);
+}
+
+.page .card .menu .button.blue {
+  background-image: var(--blue-gradient);
+  margin-right: 10px;
+  letter-spacing: 1px;
+  font-size: 0.92em;
+}
+
+.page .card .menu .button.blue span {
+  margin: 0 -3px;
+  position: relative;
+  top: 0.1em;
+}
+
+.page .card .menu .menuBtn {
+  display: none;
+  cursor: default;
+}
+
+.page .card .menu .right .items {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  padding-left: 20px;
+}
+
+.showmore {
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1);
+}
+
+.showmore-state {
+  display: none;
+}
+
+.showmore-trigger {
+  cursor: pointer;
+  box-shadow: 0 0 50px 40px var(--light-full);
+  background: var(--light-full);
+  width: 100%;
+  color: var(--red-high);
+  transition: all 0.3s ease-in-out;
+  font-family: var(--font-family-by-fontawesome);
+  position: relative;
+  top: -10px;
+}
+
+.showmore-state:checked + .showmore {
+  max-height: 999em !important;
+  transition: max-height 1s ease-in-out;
+}
+
+.showmore-state:checked + .showmore + .showmore-trigger {
+  box-shadow: none;
+}
+
+.showmore-state:checked + .showmore + .showmore-trigger:after {
+  content: attr(data-showless);
+}
+
+.showmore-state + .showmore + .showmore-trigger:before {
+  content: var(--showmore-trigger-icon);
+  margin-left: 5px;
+  position: relative;
+  top: 1.5px;
+}
+
+.showmore-state + .showmore + .showmore-trigger:after {
+  content: attr(data-showmore);
+}
+
+.panel {
+  transition: all 0.2s ease-in-out;
+}
+
+.panel .panelbox {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s cubic-bezier(0, 1, 0, 1), margin-top 0.2s ease-in-out;
+}
+
+.panel .panelhandle {
+  margin: 0;
+  cursor: pointer;
+}
+
+.panelstate:checked + .panel {
+  background: var(--light-grey);
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+.panelstate:checked + .panel .panelbox {
+  max-height: 999em;
+  transition: max-height 1s ease-in-out, margin-top 0.2s ease-in-out;
+  margin-top: 10px;
+}
+
+@media (max-width: 991px) {
+  .page .card .information {
+    flex-wrap: wrap;
+    padding: 1.5em 2.3em 2.3em;
+  }
+  .page .card .information > .main {
+    overflow: unset;
+  }
+  .page .card .information .SideColumn {
+    width: 100%;
+    flex: auto;
+    order: 1;
+    margin: 0;
+    border-radius: 5px;
+  }
+  .page .info .GoogleScholar {
+    order: 0;
+  }
+  .page .info .scopus {
+    order: 1;
+  }
+  .hide-in-md {
+    display: none;
+  }
+  .page .card .menu {
+    right: 13em;
+  }
+  .page .card .menu .left .button i {
+    margin: 0;
+  }
+  .page .info .image {
+    margin-top: -5.5em;
+  }
+  .page .info .image img {
+    width: 9em;
+  }
+  .page .info .content {
+    font-size: 0.9em;
+  }
+  .page .card .header {
+    padding-top: 5em;
+    position: static;
+  }
+  .page .iconsContainer {
+    padding-top: 5em;
+  }
+  .page .iconsContainer .icons {
+    top: 5em;
+  }
+}
+
+@media (max-width: 767px) {
+  .wrapper {
+    font-size: 0.9em;
+  }
+  .page .card .information {
+    padding: 1em 2em 2em;
+  }
+  .page .card .information .SideColumn {
+    padding: 15px;
+  }
+  .page .card .menu {
+    right: 10.5em;
+    font-size: 1.05em;
+  }
+  .page .card .info {
+    padding-top: 1em;
+  }
+  .page .card .info .content {
+    order: 2;
+  }
+  .page .card .info .GoogleScholar {
+    order: 1;
+  }
+  .page .card .info .scopus {
+    order: 0;
+    padding: 0;
+  }
+  .page .card .info .image {
+    margin-top: -4.5em;
+    margin-right: 1.5em;
+    border-width: 3px;
+  }
+  .page .card .info .image img {
+    width: 8em;
+  }
+  .page .card .info .content {
+    margin: 0;
+    padding-right: 1.3em;
+  }
+  .page .card .info .content.left {
+    padding-left: 20px;
+  }
+  .page .card .menu {
+    overflow: visible;
+  }
+  .page .card .menu > .left::before {
+    display: none;
+  }
+  .page .card .menu .right .items {
+    display: none;
+  }
+  .page .card .menu .right .menuBtn {
+    display: block;
+  }
+  .page .card .menu .right:hover .items {
+    display: flex;
+  }
+  .page .card .menu .right .items {
+    position: absolute;
+    flex-direction: row;
+    align-items: flex-end;
+    right: 0;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    border-radius: 0 0 6px 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 2px 0px rgba(114, 149, 166, 0.5);
+    padding-left: 0;
+  }
+  .page .card .menu .right .items a {
+    width: 100%;
+    margin: 0;
+    padding: 7px 15px;
+    border-radius: 0;
+    box-shadow: none;
+    background: var(--light-blue);
+  }
+  .page .card .menu .right .items a:hover {
+    background: var(--blue-grey);
+    color: var(--light-full);
+  }
+  .page .card .menu .right .items a:hover i {
+    color: var(--light-full);
+  }
+}
+
+@media (max-width: 575px) {
+  .page {
+    margin: 0;
+    flex-direction: column-reverse;
+  }
+  .page .card {
+    margin-bottom: 1em;
+  }
+  .page .iconsContainer {
+    padding-top: 0;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  .page .iconsContainer .icons {
+    padding: 0;
+    flex-direction: row;
+  }
+  .page .iconsContainer .icons a {
+    margin: 0 5px !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .page .card .info {
+    padding-bottom: 0;
+  }
+  .page .card .info .content {
+    order: 0;
+    padding: 0 2em;
+  }
+  .page .card .info .image {
+    margin-bottom: 1em;
+  }
+  .page .card .info .GoogleScholar,
+  .page .card .info .scopus {
+    order: 1;
+    margin: 0;
+  }
+}
+
+/***************************************************
+********************* WebSite *********************
+ **************************************************/
+.page.website {
+  flex-direction: column;
+}
+
+.page.website .card {
+  flex-direction: row;
+}
+
+.page.website .card .header {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.page.website .card .header .info {
+  box-shadow: 2px -2px 3px -2px var(--black-low-opacity);
+  background: var(--side-column-color);
+  border-radius: 0 4px 0 0;
+  z-index: 1;
+}
+
+.page.website .card .info::after {
+  box-shadow: none;
+}
+
+.page.website .info .content.scopus, .page.website .info .content.GoogleScholar {
+  display: none;
+}
+
+.page.website .info .image {
+  margin: -5.5em auto 0;
+}
+
+.page.website .info .content {
+  padding: 15px 10px 0;
+  font-size: 0.7em;
+  text-align: center;
+}
+
+.page.website .info .content .title {
+  margin-bottom: 0.4em;
+}
+
+.page.website .info .content .subtitle {
+  font-size: 1.2em;
+}
+
+.page.website .card .header {
+  flex: 1;
+  padding-top: 4em;
+}
+
+.page.website .card .menu {
+  display: flex;
+  position: static;
+  transform: none;
+  flex-direction: column;
+  align-items: stretch;
+  box-shadow: 0 -5px 3px -1px var(--black-low-opacity), 2px 2px 3px -2px var(--black-low-opacity);
+  background: var(--side-column-color);
+  border-radius: 0 0 4px 0;
+}
+
+.page.website .card .menu > .left,
+.page.website .card .menu > .right .items {
+  margin: 0;
+  align-items: stretch;
+  flex-direction: column;
+  width: 100%;
+  padding: 0;
+}
+
+.page.website .card .menu > .right {
+  margin: 0;
+}
+
+.page.website .card .menu a {
+  padding: 8px 20px;
+  font-size: 1em;
+  border-radius: 0;
+  margin: 0 !important;
+  background: transparent;
+  box-shadow: none;
+  color: var(--black-high);
+  transition: all 0.2s ease-in-out;
+  border-right: 0px solid transparent;
+}
+
+.page.website .card .menu a i {
+  color: var(--black-low);
+}
+
+.page.website .card .menu .left a {
+  background: transparent !important;
+  box-shadow: none !important;
+  color: var(--black-high) !important;
+}
+
+.page.website .card .menu .left a i {
+  color: var(--black-low) !important;
+}
+
+.page.website .card .menu a.active {
+  padding: 8px 20px 8px;
+  background-image: var(--orange-gradient);
+  color: var(--light-full);
+  position: relative;
+}
+
+.page.website .card .menu a.active i {
+  color: var(--light-full);
+}
+
+.page.website .card .menu a.active:hover {
+  background-image: var(--orange-gradient);
+}
+
+.page.website .card .menu a.active:after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  border: 6px solid transparent;
+  border-left-color: var(--light-full);
+  transform: translateY(-50%);
+}
+
+.page.website .card .menu a:hover {
+  background: var(--black-very-low-opacity);
+}
+
+.page.website .card .menu .left a:hover {
+  background: var(--black-very-low-opacity) !important;
+}
+
+.page.website .iconsContainer {
+  padding: 0;
+}
+
+.page.website .iconsContainer .icons {
+  flex-direction: row;
+  position: static;
+  margin: 1em 0;
+  padding: 0;
+  float: left;
+}
+
+.page.website .iconsContainer .icons a {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.page.website .card {
+  margin-bottom: 0;
+}
+
+.page.website .card .body {
+  box-shadow: 0 0 3px var(--black-low-opacity);
+  border-radius: 4px 4px 0;
+  align-self: stretch;
+  flex: 5;
+  position: relative;
+  z-index: 2;
+}
+
+.page.website .card .information {
+  padding: 30px;
+  overflow: hidden;
+}
+
+.page.website .card .information .SideColumn {
+  position: static;
+  margin: 0 15px 0 0;
+}
+
+.page.website .card .information .SideColumn h3 {
+  font-size: 1.4em;
+}
+
+@media (min-width: 992px) {
+  .page.website .card .information > .main {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 1199px) {
+  .page.website .card .body {
+    flex: 4;
+  }
+}
+
+@media (max-width: 991px) {
+  .page.website .card .body {
+    flex: 3;
+  }
+  .page.website .info .content .title {
+    font-size: 1.7em;
+  }
+  .page.website .card .information .SideColumn {
+    margin: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .page.website .card .information .SideColumn {
+    margin: 0 0 30px;
+  }
+}
+
+/***************************************************
+********************** Layout **********************
+ **************************************************/
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.wrapper .container {
+  flex-grow: 1;
+  margin-bottom: 3em;
+}
+
+.footer {
+  display: block;
+  background: var(--black-low);
+  color: var(--light-full);
+  padding: 1em;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/***************************************************
+********************** Lessons *********************
+ **************************************************/
+.plannerContainer {
+  overflow-x: auto;
+}
+
+table.planner {
+  width: 100%;
+}
+
+table.planner thead th {
+  color: var(--black-low);
+  font-variation-settings: "wght" 200;
+  background: var(--light-grey-medium);
+  padding: 0.6em 0.2em;
+  width: 1px;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+table.planner thead th.active {
+  color: var(--light-full);
+  background: var(--grey-high);
+}
+
+table.planner thead th:first-child {
+  font-size: 1.1em;
+  white-space: nowrap;
+  border-radius: 0 4px 4px 0;
+  overflow: hidden;
+  font-variation-settings: "wght" 400;
+  padding: 0.6em 1em;
+}
+
+table.planner thead th:last-child {
+  border-radius: 4px 0 0 4px;
+  overflow: hidden;
+}
+
+table.planner tbody tr {
+  border-bottom: 2px solid var(--light-grey-medium);
+}
+
+table.planner tbody tr td {
+  max-width: 0;
+}
+
+table.planner tbody tr td:first-child {
+  font-variation-settings: "wght" 300;
+  font-size: 1em;
+  color: var(--black-low);
+  white-space: nowrap;
+  max-width: 50px;
+  font-variation-settings: "wght" 300;
+  text-align: center;
+  border-left: 2px solid var(--light-grey-low);
+}
+
+table.planner .plan {
+  background: var(--light-grey-high);
+  padding: 0.9em;
+  color: var(--black-high);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: -1px;
+  box-shadow: 1px 1px 0 1px var(--light-grey-medium), -1px 1px 0 1px var(--light-grey-medium);
+  transition: all 0.2s ease-in-out;
+}
+
+table.planner .plan .title {
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  text-align: center;
+  font-size: 0.95em;
+  font-variation-settings: "wght" 400;
+}
+
+table.planner .plan:hover {
+  background: var(--light-grey-medium);
+}
+
+.planTooltip {
+  color: var(--black-high);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 22em;
+  font-variation-settings: "wght" 200;
+  font-size: 0.95em;
+  margin: 0 -3px;
+}
+
+.planTooltip .box {
+  display: flex;
+  flex-wrap: wrap;
+  line-height: 1.5;
+}
+
+.planTooltip .title {
+  width: 100%;
+  background: var(--light-grey);
+  padding: 7px;
+  border-radius: 3px;
+  margin: 0px 0 10px;
+  font-size: 1.1em;
+}
+
+.planTooltip .w50 {
+  flex: 0 0 50%;
+  white-space: nowrap;
+  padding: 0 0 7px 0;
+}
+
+.planTooltip .w100 {
+  padding: 0 0 7px 0;
+}
+
+.planTooltip b {
+  font-variation-settings: "wght" 300;
+  color: var(--red-very-high);
+}
+
+/***************************************************
+*********************** Files ***********************
+ **************************************************/
+.files .books ul ul {
+  margin-right: 30px;
+  border-radius: 4px;
+}
+
+.files .books ul ul:hover,
+.files .books ul li:hover {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+.files .books > ul > ul > li:before {
+  border: 1px solid var(--red-medium) !important;
+  width: 8px;
+  height: 8px;
+}
+
+.files .books > ul > ul > ul > ul > li:before,
+.files .books > ul > ul > ul > ul > ul > ul > li:before {
+  border: 1px solid var(--red-medium) !important;
+  width: 8px;
+  height: 8px;
+}
+
+/***************************************************
+**************** Tippy Light Theme ****************
+ **************************************************/
+.tippy-box[data-theme~="light"] {
+  color: var(--black-high);
+  box-shadow: 0 0 20px 4px var(--black-low-opacity), 0 4px 4px -2px var(--black-low-opacity) !important;
+  background-color: var(--light-full);
+  font-size: 1em !important;
+}
+
+.tippy-box[data-theme~="light"][data-placement^="top"] > .tippy-arrow:before {
+  border-top-color: var(--light-full);
+}
+
+.tippy-box[data-theme~="light"][data-placement^="bottom"] > .tippy-arrow:before {
+  border-bottom-color: var(--light-full);
+}
+
+.tippy-box[data-theme~="light"][data-placement^="left"] > .tippy-arrow:before {
+  border-left-color: var(--light-full);
+}
+
+.tippy-box[data-theme~="light"][data-placement^="right"] > .tippy-arrow:before {
+  border-right-color: var(--light-full);
+}
+
+.tippy-box[data-theme~="light"] > .tippy-backdrop {
+  background-color: var(--light-full);
+}
+
+.tippy-box[data-theme~="light"] > .tippy-svg-arrow {
+  fill: var(--light-full);
+}
+
+/***************************************************
+******************* Clean Table ********************
+ **************************************************/
+.cleanTable {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.cleanTable thead {
+  border-bottom: solid 2px var(--clean-table-border);
+}
+
+.cleanTable thead tr th {
+  color: var(--clean-table-color);
+  font-size: 0.9em;
+  font-variation-settings: "wght" 200;
+  padding: 0 0.75em 0.75em 0.75em;
+}
+
+.cleanTable tbody tr {
+  border: solid 1px var(--clean-table-border);
+  border-left: 0;
+  border-right: 0;
+}
+
+.cleanTable tbody tr:nth-child(2n + 1) {
+  background-color: var(--clean-table-odd-row-bg);
+}
+
+.cleanTable td {
+  padding: 0.75em 0.75em;
+}
+
+.cleanTable a {
+  border-bottom: 1px dashed var(--grey-high);
+}
+
+.cleanTable a:hover {
+  border-bottom: 1px solid var(--grey-meduim);
+}
+
+.wrap {
+  white-space: normal;
+}
+
+.compress-table {
+  width: 100%;
+}
+
+.compress-table > thead {
+  display: none;
+}
+
+.compress-table td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.compress-table td::before {
+  content: attr(data-header) " ";
+}
+
+/***************************************************
+********************** Theses **********************
+ **************************************************/
+.theses .books ul li .title {
+  font-size: 1.1em;
+}
+
+/***************************************************
+********************* Shortcuts ********************
+ **************************************************/
+.shortcuts {
+  margin-top: 30px;
+}
+
+.shortcuts a {
+  font-size: 1.4em;
+  display: flex;
+  color: var(--black-low);
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.shortcuts a i {
+  font-size: 1.4em;
+  padding: 0.5em;
+  width: 3em;
+  height: 3em;
+  text-align: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  border-radius: 6em;
+  background: var(--light-grey);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.shortcuts a .text {
+  flex-grow: 1;
+  flex-shrink: 1;
+  margin: 0 0.8em;
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+}
+
+.shortcuts a .text span {
+  display: inline-block;
+  width: 100%;
+}
+
+.shortcuts a span.subtitle {
+  font-size: 0.7em;
+  color: var(--grey-meduim);
+}
+
+.shortcuts a i:before {
+  transition: transform 0.3s ease-out;
+}
+
+.shortcuts a:hover {
+  color: var(--black-high);
+}
+
+.shortcuts a:hover i {
+  background: var(--light-grey-medium);
+}
+
+.shortcuts a:hover i:before {
+  transform: scale(1.4) rotate(-5deg);
+}
+
+.shortcuts a:hover .text .subtitle {
+  color: var(--grey-high);
+}
+
+@media (max-width: 767px) {
+  .shortcuts {
+    font-size: 0.9em;
+  }
+}
+
+/***************************************************
+*********************** Scroll **********************
+ **************************************************/
+.transition-all-02s-in-out, .page .card .info, .page .card .info .image img, .page .card .info .content, .page .card .info .content .subtitle, .page .card .menu {
+  transition: all 0.2s ease-in-out;
+}
+
+.page.scroll .card .info {
+  box-shadow: 0 -1px 3px -1px var(--black-low-opacity), 0 5px 30px -30px var(--black-full);
+}
+
+.page.scroll .card .info .image img {
+  width: 7.5em;
+}
+
+.page.scroll .card .info .content {
+  font-size: 0.7em;
+  margin-top: -10px;
+}
+
+.page.scroll .card .info .content .title {
+  margin-bottom: 5px;
+}
+
+.page.scroll .card .menu {
+  right: 11.5em;
+}

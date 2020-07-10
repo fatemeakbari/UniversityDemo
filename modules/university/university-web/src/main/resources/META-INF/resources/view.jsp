@@ -1,20 +1,26 @@
 <%@ taglib prefix="liferay-ddm" uri="http://liferay.com/tld/ddm" %>
 <%@ page import="com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItemList" %>
 <%@ page import="com.liferay.frontend.taglib.clay.servlet.taglib.util.DropdownItem" %>
-<%@ page import="javax.portlet.PortletURL" %>
 <%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
-<%@ page import="javax.portlet.RenderResponse" %>
-<%@ page import="javax.portlet.RenderURL" %>
+<%@ page import="com.liferay.portal.kernel.portlet.*" %>
+<%@ page import="javax.portlet.*" %>
 <%@ include file="/init.jsp" %>
 
 
 
+
+<%--<liferay-portlet:renderURL var="portlet2Url" plid="<%= themeDisplay.getPlid()%>"--%>
+<%--						   portletName="<%=TeacherPortletKeys.TEACHER_INFO%>"--%>
+<%--						   windowState="<%=LiferayWindowState.MAXIMIZED.toString() %>"--%>
+<%--						>--%>
+<%--</liferay-portlet:renderURL>--%>
+<%--<a href="${portlet2Url}">Portlet 2 Link</a>--%>
 <%
 
-	String collegeName = ParamUtil.getString(request,"collegeName");
-	if(collegeName == null){
+	String collegeName; //= ParamUtil.getString(request,"collegeName");
+	//if(collegeName == null){
 		collegeName = "mathCollege";
-	}
+	//}
 %>
 
 
@@ -40,13 +46,14 @@
 </br>
 
 <%
+
 	List<Teacher> teachers = TeacherLocalServiceUtil.getTeachers(collegeName,scopeGroupId);
 %>
-<%--<liferay-ddm:template-renderer--%>
-<%--		className="<%= Teacher.class.getName() %>"--%>
-<%--		displayStyle="<%= displayStyle %>"--%>
-<%--		displayStyleGroupId="<%= displayStyleGroupId %>"--%>
-<%--		entries="<%= teachers %>">--%>
+<liferay-ddm:template-renderer
+		className="<%= Teacher.class.getName() %>"
+		displayStyle="<%= displayStyle %>"
+		displayStyleGroupId="<%= displayStyleGroupId %>"
+		entries="<%= teachers %>">
 
 
 
@@ -71,14 +78,13 @@
 		%>
 		<div class="col-md-4">
 
-			<portlet:renderURL var="teacherInfoURL">
-				<portlet:param name="mvcPath" value="/teacher_info.jsp"/>
+			<portlet:actionURL var="ipcTeacherId" name="ipcTeacherId">
 				<portlet:param name="teacherId" value="<%=String.valueOf(curTeacher.getTeacherId())%>"/>
-			</portlet:renderURL>
+			</portlet:actionURL>
 			<clay:user-card
 					name="<%=curTeacher.getName()%>"
 					subtitle="<%=curTeacher.getCollege()%>"
-					href="${teacherInfoURL}"
+					href="${ipcTeacherId}"
 					actionDropdownItems=
 							"<%=cardsDropdownDisplayContext.getTeacherDropdownItems(curTeacher.getTeacherId())%>"
 
@@ -96,6 +102,26 @@
 		}
 	%>
 
-<%--</liferay-ddm:template-renderer>--%>
+</liferay-ddm:template-renderer>
 
+
+<%--<%=portletDisplayDDMTemplateId%>--%>
+<%--<c:choose>--%>
+<%--	<c:when test="<%= portletDisplayDDMTemplateId > 0 %>">--%>
+<%--		<%= PortletDisplayTemplateUtil.renderDDMTemplate(request,response,portletDisplayDDMTemplateId,teachers) ;--%>
+<%--		%>--%>
+<%--		--%>
+<%--	</c:when>--%>
+<%--	<c:otherwise>--%>
+<%--		<table border="1">--%>
+<%--			<tr><th>Name</th><th>city</th></tr>--%>
+
+<%--			<%--%>
+<%--				for(Student student:students){%>--%>
+<%--			<tr><td><%=student.getName()%></td>--%>
+<%--				<td><%=student.getCity()%></td></tr>--%>
+<%--			<%} %>--%>
+<%--		</table>--%>
+<%--	</c:otherwise>--%>
+<%--</c:choose>--%>
 

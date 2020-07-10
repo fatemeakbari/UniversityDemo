@@ -39,7 +39,9 @@ import java.io.IOException;
 		"javax.portlet.init-param.view-template=/view.jsp",
 		"javax.portlet.name=" + TeacherPortletKeys.TEACHER,
 		"javax.portlet.resource-bundle=content.Language",
-		"javax.portlet.security-role-ref=power-user,user"
+		"com.liferay.portlet.add-default-resource=true",
+		"javax.portlet.supported-public-render-parameter=teacherId"
+
 	},
 	service = Portlet.class
 )
@@ -64,6 +66,13 @@ public class TeacherPortlet extends MVCPortlet {
 		super.doDispatch(renderRequest, renderResponse);
 	}
 
+	@ProcessAction(name = "ipcTeacherId")
+	public void ipcTeacherId(ActionRequest actionRequest, ActionResponse actionResponse){
+
+		Long teacherId = ParamUtil.getLong(actionRequest,"teacherId");
+		actionResponse.getRenderParameters().setValue("teacherId",teacherId.toString());
+
+	}
 	@ProcessAction(name = "addTeacher")
 	public void addTeacher(ActionRequest actionRequest, ActionResponse actionResponse) throws IOException {
 

@@ -1,5 +1,0 @@
-Bundle-Name: student-web
-Bundle-SymbolicName: com.proliferay.myportlet
-Bundle-Version: 1.0.0
--metatype: *
-Export-Package: com.proliferay.myportlet.constants

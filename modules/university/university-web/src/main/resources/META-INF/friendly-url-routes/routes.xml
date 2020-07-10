@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!DOCTYPE routes PUBLIC "-//Liferay//DTD Friendly URL Routes 7.1.0//EN" "http://www.liferay.com/dtd/liferay-friendly-url-routes_7_1_0.dtd">
+
+<routes>
+
+<!--    <route>-->
+<!--        <pattern>/{instanceId}/teacher-info/{teacherId}</pattern>-->
+<!--        <generated-parameter name="teacherId">{teacherId}</generated-parameter>-->
+<!--        <implicit-parameter name="p_p_lifecycle">1</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_state">normal</implicit-parameter>-->
+<!--        <implicit-parameter name="p_p_mode">view</implicit-parameter>-->
+<!--        <implicit-parameter name="javax.portlet.action">ipcTeacherId</implicit-parameter>-->
+<!--    </route>-->
+
+</routes>

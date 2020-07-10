@@ -22,11 +22,11 @@ import java.util.Map;
 @Component(
         configurationPid = "com.liferay.myportlet.config.TeacherConfiguration",
         configurationPolicy = ConfigurationPolicy.OPTIONAL, immediate = true,
-        property = "javax.portlet.name="+ TeacherPortletKeys.TEACHER,
+        property = "javax.portlet.name="+ TeacherPortletKeys.TEACHER_INFO,
 
         service = ConfigurationAction.class
 )
-public class TeacherConfigurationAction extends DefaultConfigurationAction {
+public class TeacherInfoConfigurationAction extends DefaultConfigurationAction {
 
     @Override
     public void include(PortletConfig portletConfig, HttpServletRequest httpServletRequest,
@@ -42,7 +42,7 @@ public class TeacherConfigurationAction extends DefaultConfigurationAction {
             throws Exception {
 
         _log.info("########process action########");
-        System.out.println("teacher  config action");
+        System.out.println("teacher info config action");
         //setPreference(actionRequest,"displayStyle",displayStyle);
         super.processAction(portletConfig, actionRequest, actionResponse);
     }
@@ -56,7 +56,7 @@ public class TeacherConfigurationAction extends DefaultConfigurationAction {
         teacherConfiguration = ConfigurableUtil.createConfigurable(TeacherConfiguration.class, properties);
     }
 
-    private static final Log _log = LogFactoryUtil.getLog(TeacherConfigurationAction.class);
+    private static final Log _log = LogFactoryUtil.getLog(TeacherInfoConfigurationAction.class);
 
     private volatile TeacherConfiguration teacherConfiguration;
 

@@ -7,6 +7,7 @@ taglib uri="http://liferay.com/tld/theme" prefix="liferay-theme" %><%@
 taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 
 <%@ taglib uri="http://liferay.com/tld/clay" prefix="clay" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="utf-8"%>
 
 
 <%@ taglib uri="http://liferay.com/tld/frontend" prefix="liferay-frontend" %>
@@ -28,6 +29,11 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
 <%@ page import="com.liferay.portal.kernel.portlet.PortletPreferencesFactoryUtil" %>
 <%@ page import="com.liferay.portal.kernel.util.GetterUtil" %>
 <%@ page import="com.liferay.portal.kernel.util.StringPool" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
+<%@ taglib prefix="liferay-ddm" uri="http://liferay.com/tld/ddm" %>
+<%@ page import="com.liferay.portal.kernel.util.ParamUtil" %>
+<%@ page import="com.liferay.portal.kernel.theme.ThemeDisplay" %>
+<%@ page import="com.liferay.portal.kernel.model.Layout" %>
 <liferay-theme:defineObjects />
 <portlet:defineObjects />
 
@@ -42,5 +48,11 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
     String displayStyle =
             GetterUtil.getString(portletPreferences.getValue("displayStyle", StringPool.BLANK));
     long displayStyleGroupId = GetterUtil.getLong(portletPreferences.getValue("displayStyleGroupId", null), scopeGroupId);
+
+
+
+//    PortletDisplayTemplateUtil.getPortletDisplayTemplate().getDDMTemplateGroupId(scopeGroupId);
+//    long portletDisplayDDMTemplateId = PortletDisplayTemplateUtil.getPortletDisplayTemplate().getDDMTemplateGroupId(scopeGroupId);
+
 
 %>
