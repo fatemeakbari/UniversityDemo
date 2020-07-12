@@ -49,10 +49,4 @@ taglib uri="http://liferay.com/tld/ui" prefix="liferay-ui" %>
             GetterUtil.getString(portletPreferences.getValue("displayStyle", StringPool.BLANK));
     long displayStyleGroupId = GetterUtil.getLong(portletPreferences.getValue("displayStyleGroupId", null), scopeGroupId);
 
-
-
-//    PortletDisplayTemplateUtil.getPortletDisplayTemplate().getDDMTemplateGroupId(scopeGroupId);
-//    long portletDisplayDDMTemplateId = PortletDisplayTemplateUtil.getPortletDisplayTemplate().getDDMTemplateGroupId(scopeGroupId);
-
-
 %>

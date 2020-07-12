@@ -3,6 +3,7 @@ package com.liferay.myportlet.portlet;
 import com.liferay.myportlet.constants.TeacherPortletKeys;
 
 import com.liferay.myportlet.display.context.CardsDropdownDisplayContext;
+import com.liferay.myportlet.display.context.FakeUniversityPerson;
 import com.liferay.myportlet.display.context.MenuDropdownDisplayContext;
 import com.liferay.myportlet.model.Teacher;
 import com.liferay.myportlet.service.TeacherLocalService;
@@ -31,12 +32,13 @@ import java.io.IOException;
 	configurationPid = "com.liferay.myportlet.config.TeacherConfiguration",
 	property = {
 		"com.liferay.portlet.display-category=university",
-		"com.liferay.portlet.header-portlet-css=/css/main.css",
+		"com.liferay.portlet.header-portlet-css=/css/list-css/style.css",
+		"com.liferay.portlet.header-portlet-javascript=/js/custom.js",
 		"com.liferay.portlet.instanceable=true",
 		"javax.portlet.display-name=Teacher",
 		"javax.portlet.init-param.template-path=/",
 		"javax.portlet.init-param.config-template=/configuration.jsp",
-		"javax.portlet.init-param.view-template=/view.jsp",
+		"javax.portlet.init-param.view-template=/teacher_list.jsp",
 		"javax.portlet.name=" + TeacherPortletKeys.TEACHER,
 		"javax.portlet.resource-bundle=content.Language",
 		"com.liferay.portlet.add-default-resource=true",
@@ -59,8 +61,10 @@ public class TeacherPortlet extends MVCPortlet {
 
 
 		CardsDropdownDisplayContext cardsDropdownDisplayContext = new CardsDropdownDisplayContext(renderResponse);
-
 		renderRequest.setAttribute(TeacherPortletKeys.CARDS_DISPLAY_CONTEXT, cardsDropdownDisplayContext);
+
+		FakeUniversityPerson fakeUniversityPerson = new FakeUniversityPerson();
+		renderRequest.setAttribute(TeacherPortletKeys.FAKE_UNIVERSITY_PERSONS, fakeUniversityPerson.getUniversityPersons());
 
 
 		super.doDispatch(renderRequest, renderResponse);

@@ -30,8 +30,6 @@
         displayStyleGroupId="<%= displayStyleGroupId %>"
         entries="<%= universityPersons %>">
 
-<!DOCTYPE html>
-
 
 </liferay-ddm:template-renderer>
 
